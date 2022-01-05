@@ -9,14 +9,13 @@ function App() {
   const [Landingcost, setLandingcost] = useState();
   const [Insert, setInsert] = useState();
   const [PPC, setPPC] = useState();
-  const [Graphics, setGraphics] = useState();
   const [Listing, setListing] = useState();
   const [Revenue, setRevenue] = useState();
   const [RefFee, setRefFee] = useState();
   const [FBAFee, setFBAFee] = useState();
   const [TotalOutPerUnit, setTotalOutPerUnit] = useState();
-  const [MonthlySAAS, setMonthlySAAS] = useState();
-  const [YearlySAAS, setYearlySAAS] = useState();
+  const [OneOrderTimeSAAS, setOneOrderTimeSAAS] = useState();
+  const [TotalSAAS, setTotalSAAS] = useState();
   const [LLC, setLLC] = useState();
   const [Trademark, setTrademark] = useState();
   const [Photographing, setPhotographing] = useState();
@@ -43,7 +42,7 @@ function App() {
           <tr>
             <div>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 Manufacturing:
               </td>
@@ -63,8 +62,7 @@ function App() {
                         +Packaging +
                         +Freights +
                         +Insert +
-                        +PPC +
-                        +Graphics
+                        +PPC
                     );
                     setTotalOutPerUnit(
                       +e.target.value +
@@ -72,21 +70,32 @@ function App() {
                         +Packaging +
                         +Insert +
                         +PPC +
-                        +Graphics +
                         +RefFee +
                         +FBAFee
                     );
                     setTotalOutPerOrder(
-                      +UnitsInOrder *
-                        (+Listing +
-                          +e.target.value +
-                          +Inspection +
-                          +Packaging +
-                          +Insert +
-                          +PPC +
-                          +Graphics +
-                          +RefFee +
-                          +FBAFee)
+                      +OneOrderTimeSAAS +
+                        +UnitsInOrder *
+                          (+Listing +
+                            +e.target.value +
+                            +Inspection +
+                            +Packaging +
+                            +Insert +
+                            +PPC +
+                            +RefFee +
+                            +FBAFee)
+                    );
+                    setTotalOut(
+                      +Orders *
+                        (+UnitsInOrder *
+                          (+Listing +
+                            +e.target.value +
+                            +Inspection +
+                            +Packaging +
+                            +Insert +
+                            +PPC +
+                            +RefFee +
+                            +FBAFee))
                     );
                   }}
                   type="number"
@@ -105,7 +114,7 @@ function App() {
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 Inspection:
               </td>
@@ -127,8 +136,7 @@ function App() {
                         +Packaging +
                         +Freights +
                         +Insert +
-                        +PPC +
-                        +Graphics
+                        +PPC
                     );
                     setTotalOutPerUnit(
                       +Manufacturing +
@@ -137,22 +145,34 @@ function App() {
                         +Packaging +
                         +Insert +
                         +PPC +
-                        +Graphics +
                         +RefFee +
                         +FBAFee
                     );
                     setTotalOutPerOrder(
-                      +UnitsInOrder *
-                        (+Listing +
-                          +Manufacturing +
-                          +e.target.value +
-                          +Inspection +
-                          +Packaging +
-                          +Insert +
-                          +PPC +
-                          +Graphics +
-                          +RefFee +
-                          +FBAFee)
+                      +OneOrderTimeSAAS +
+                        +UnitsInOrder *
+                          (+Listing +
+                            +Manufacturing +
+                            +e.target.value +
+                            +Inspection +
+                            +Packaging +
+                            +Insert +
+                            +PPC +
+                            +RefFee +
+                            +FBAFee)
+                    );
+                    setTotalOut(
+                      +Orders *
+                        (+UnitsInOrder *
+                          (+Listing +
+                            +Manufacturing +
+                            +e.target.value +
+                            +Inspection +
+                            +Packaging +
+                            +Insert +
+                            +PPC +
+                            +RefFee +
+                            +FBAFee))
                     );
                   }}
                   type="number"
@@ -171,7 +191,7 @@ function App() {
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 Packaging:
               </td>
@@ -193,8 +213,7 @@ function App() {
                         +e.target.value +
                         +Freights +
                         +Insert +
-                        +PPC +
-                        +Graphics
+                        +PPC
                     );
                     setTotalOutPerUnit(
                       +Manufacturing +
@@ -203,22 +222,34 @@ function App() {
                         +Packaging +
                         +Insert +
                         +PPC +
-                        +Graphics +
                         +RefFee +
                         +FBAFee
                     );
                     setTotalOutPerOrder(
-                      +UnitsInOrder *
-                        (+Listing +
-                          +Manufacturing +
-                          +Inspection +
-                          +e.target.value +
-                          +Packaging +
-                          +Insert +
-                          +PPC +
-                          +Graphics +
-                          +RefFee +
-                          +FBAFee)
+                      +OneOrderTimeSAAS +
+                        +UnitsInOrder *
+                          (+Listing +
+                            +Manufacturing +
+                            +Inspection +
+                            +e.target.value +
+                            +Packaging +
+                            +Insert +
+                            +PPC +
+                            +RefFee +
+                            +FBAFee)
+                    );
+                    setTotalOut(
+                      +Orders *
+                        (+UnitsInOrder *
+                          (+Listing +
+                            +Manufacturing +
+                            +Inspection +
+                            +e.target.value +
+                            +Packaging +
+                            +Insert +
+                            +PPC +
+                            +RefFee +
+                            +FBAFee))
                     );
                   }}
                   type="number"
@@ -237,7 +268,7 @@ function App() {
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 Production:
               </td>
@@ -262,7 +293,7 @@ function App() {
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 Freights:{" "}
               </td>
@@ -279,8 +310,7 @@ function App() {
                         +Packaging +
                         +e.target.value +
                         +Insert +
-                        +PPC +
-                        +Graphics
+                        +PPC
                     );
                     setTotalOutPerUnit(
                       +Manufacturing +
@@ -289,22 +319,34 @@ function App() {
                         +e.target.value +
                         +Insert +
                         +PPC +
-                        +Graphics +
                         +RefFee +
                         +FBAFee
                     );
                     setTotalOutPerOrder(
-                      +UnitsInOrder *
-                        (+Listing +
-                          +Manufacturing +
-                          +Inspection +
-                          +Packaging +
-                          +e.target.value +
-                          +Insert +
-                          +PPC +
-                          +Graphics +
-                          +RefFee +
-                          +FBAFee)
+                      +OneOrderTimeSAAS +
+                        +UnitsInOrder *
+                          (+Listing +
+                            +Manufacturing +
+                            +Inspection +
+                            +Packaging +
+                            +e.target.value +
+                            +Insert +
+                            +PPC +
+                            +RefFee +
+                            +FBAFee)
+                    );
+                    setTotalOut(
+                      +Orders *
+                        (+UnitsInOrder *
+                          (+Listing +
+                            +Manufacturing +
+                            +Inspection +
+                            +Packaging +
+                            +e.target.value +
+                            +Insert +
+                            +PPC +
+                            +RefFee +
+                            +FBAFee))
                     );
                   }}
                   type="number"
@@ -323,7 +365,7 @@ function App() {
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 Landingcost:
               </td>
@@ -348,7 +390,7 @@ function App() {
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 Insert:{" "}
               </td>
@@ -364,8 +406,7 @@ function App() {
                         +Packaging +
                         +Freights +
                         +e.target.value +
-                        +PPC +
-                        +Graphics
+                        +PPC
                     );
                     setTotalOutPerUnit(
                       +Manufacturing +
@@ -374,22 +415,34 @@ function App() {
                         +Freights +
                         +e.target.value +
                         +PPC +
-                        +Graphics +
                         +RefFee +
                         +FBAFee
                     );
                     setTotalOutPerOrder(
-                      +UnitsInOrder *
-                        (+Listing +
-                          +Manufacturing +
-                          +Inspection +
-                          +Packaging +
-                          +Freights +
-                          +e.target.value +
-                          +PPC +
-                          +Graphics +
-                          +RefFee +
-                          +FBAFee)
+                      +OneOrderTimeSAAS +
+                        +UnitsInOrder *
+                          (+Listing +
+                            +Manufacturing +
+                            +Inspection +
+                            +Packaging +
+                            +Freights +
+                            +e.target.value +
+                            +PPC +
+                            +RefFee +
+                            +FBAFee)
+                    );
+                    setTotalOut(
+                      +Orders *
+                        (+UnitsInOrder *
+                          (+Listing +
+                            +Manufacturing +
+                            +Inspection +
+                            +Packaging +
+                            +Freights +
+                            +e.target.value +
+                            +PPC +
+                            +RefFee +
+                            +FBAFee))
                     );
                   }}
                   type="number"
@@ -408,7 +461,7 @@ function App() {
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 PPC:{" "}
               </td>
@@ -424,67 +477,6 @@ function App() {
                         +Packaging +
                         +Freights +
                         +Insert +
-                        +e.target.value +
-                        +Graphics
-                    );
-                    setTotalOutPerUnit(
-                      +Manufacturing +
-                        +Inspection +
-                        +Packaging +
-                        +Freights +
-                        +Insert +
-                        +e.target.value +
-                        +Graphics +
-                        +RefFee +
-                        +FBAFee
-                    );
-                    setTotalOutPerOrder(
-                      +UnitsInOrder *
-                        (+Listing +
-                          +Manufacturing +
-                          +Inspection +
-                          +Packaging +
-                          +Freights +
-                          +Insert +
-                          +e.target.value +
-                          +Graphics +
-                          +RefFee +
-                          +FBAFee)
-                    );
-                  }}
-                  type="number"
-                  min="0.00"
-                  max="100000000.00"
-                  step="0.01"
-                />
-              </td>
-              <td
-                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
-              >
-                {"$"}
-              </td>
-            </div>
-          </tr>
-          <tr>
-            <div style={{ textAlign: "center" }}>
-              <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
-              >
-                Graphics:{" "}
-              </td>
-              <td style={{ color: "blue", fontWeight: "bolder" }}>
-                <input
-                  style={{ width: "80px", textAlign: "center" }}
-                  value={parseInt(Graphics * 100) / 100}
-                  onChange={(e) => {
-                    setGraphics(+e.target.value);
-                    setListing(
-                      +Manufacturing +
-                        +Inspection +
-                        +Packaging +
-                        +Freights +
-                        +Insert +
-                        +PPC +
                         +e.target.value
                     );
                     setTotalOutPerUnit(
@@ -493,23 +485,35 @@ function App() {
                         +Packaging +
                         +Freights +
                         +Insert +
-                        +PPC +
                         +e.target.value +
                         +RefFee +
                         +FBAFee
                     );
                     setTotalOutPerOrder(
-                      +UnitsInOrder *
-                        (+Listing +
-                          +Manufacturing +
-                          +Inspection +
-                          +Packaging +
-                          +Freights +
-                          +Insert +
-                          +PPC +
-                          +e.target.value +
-                          +RefFee +
-                          +FBAFee)
+                      +OneOrderTimeSAAS +
+                        +UnitsInOrder *
+                          (+Listing +
+                            +Manufacturing +
+                            +Inspection +
+                            +Packaging +
+                            +Freights +
+                            +Insert +
+                            +e.target.value +
+                            +RefFee +
+                            +FBAFee)
+                    );
+                    setTotalOut(
+                      +Orders *
+                        (+UnitsInOrder *
+                          (+Listing +
+                            +Manufacturing +
+                            +Inspection +
+                            +Packaging +
+                            +Freights +
+                            +Insert +
+                            +e.target.value +
+                            +RefFee +
+                            +FBAFee))
                     );
                   }}
                   type="number"
@@ -528,7 +532,7 @@ function App() {
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 Listing:{" "}
               </td>
@@ -553,7 +557,7 @@ function App() {
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 Revenue:
               </td>
@@ -564,18 +568,22 @@ function App() {
                   onChange={(e) => {
                     setRevenue(+e.target.value);
                     setRefFee(0.15 * +e.target.value);
-                    setFBAFee(0.3 * +e.target.value);
+                    setFBAFee(0.25 * +e.target.value);
                     setTotalOutPerUnit(
                       +Listing +
                         +(0.15 * +e.target.value) +
-                        +(0.3 * +e.target.value)
+                        +(0.25 * +e.target.value)
                     );
                     setTotalOutPerOrder(
-                      +UnitsInOrder *
-                        (+Listing +
-                          +(0.15 * +e.target.value) +
-                          +(0.3 * +e.target.value))
+                      +OneOrderTimeSAAS +
+                        +UnitsInOrder *
+                          (+Listing +
+                            +(0.15 * +e.target.value) +
+                            +(0.25 * +e.target.value))
                     );
+                    setTotalInPerOrder(+UnitsInOrder * +e.target.value);
+                    setTotalOut(+Orders * (+UnitsInOrder * +e.target.value));
+                    setTotalIn(+e.target.value * +UnitsInOrder * +Orders);
                   }}
                   type="number"
                   min="0.00"
@@ -593,7 +601,7 @@ function App() {
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 RefFee:{" "}
               </td>
@@ -618,7 +626,7 @@ function App() {
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 FBAFee:{" "}
               </td>
@@ -643,7 +651,7 @@ function App() {
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 TotalOutPerUnit:
               </td>
@@ -668,17 +676,17 @@ function App() {
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
-                MonthlySAAS:
+                OneOrderTimeSAAS:
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
                   style={{ width: "80px", textAlign: "center" }}
-                  value={parseInt(MonthlySAAS * 100) / 100}
+                  value={parseInt(OneOrderTimeSAAS * 100) / 100}
                   onChange={(e) => {
-                    setMonthlySAAS(+e.target.value);
-                    setYearlySAAS(12 * +e.target.value);
+                    setOneOrderTimeSAAS(+e.target.value);
+                    setTotalSAAS(+Orders * +e.target.value);
                   }}
                   type="number"
                   min="0.00"
@@ -696,14 +704,14 @@ function App() {
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
-                YearlySAAS:
+                TotalSAAS:
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
                   style={{ width: "80px", textAlign: "center" }}
-                  value={parseInt(YearlySAAS * 100) / 100}
+                  value={parseInt(TotalSAAS * 100) / 100}
                   type="number"
                   min="0.00"
                   max="100000000.00"
@@ -721,7 +729,7 @@ function App() {
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 LLC:
               </td>
@@ -740,6 +748,16 @@ function App() {
                         +PackagingDesign +
                         +Samples
                     );
+                    setTotalOut(
+                      +TotalOutPerOrder * +Orders +
+                        (+e.target.value +
+                          +Trademark +
+                          +Photographing +
+                          +Unboxing +
+                          +InsertDesign +
+                          +PackagingDesign +
+                          +Samples)
+                    );
                   }}
                   type="number"
                   min="0.00"
@@ -757,7 +775,7 @@ function App() {
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 Trademark:
               </td>
@@ -776,6 +794,16 @@ function App() {
                         +PackagingDesign +
                         +Samples
                     );
+                    setTotalOut(
+                      +TotalOutPerOrder * +Orders +
+                        (+LLC +
+                          +e.target.value +
+                          +Photographing +
+                          +Unboxing +
+                          +InsertDesign +
+                          +PackagingDesign +
+                          +Samples)
+                    );
                   }}
                   type="number"
                   min="0.00"
@@ -793,7 +821,7 @@ function App() {
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 Photographing:
               </td>
@@ -812,6 +840,16 @@ function App() {
                         +PackagingDesign +
                         +Samples
                     );
+                    setTotalOut(
+                      +TotalOutPerOrder * +Orders +
+                        (+LLC +
+                          +Trademark +
+                          +e.target.value +
+                          +Unboxing +
+                          +InsertDesign +
+                          +PackagingDesign +
+                          +Samples)
+                    );
                   }}
                   type="number"
                   min="0.00"
@@ -829,7 +867,7 @@ function App() {
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 Unboxing:
               </td>
@@ -848,6 +886,16 @@ function App() {
                         +PackagingDesign +
                         +Samples
                     );
+                    setTotalOut(
+                      +TotalOutPerOrder * +Orders +
+                        (+LLC +
+                          +Trademark +
+                          +Photographing +
+                          +e.target.value +
+                          +InsertDesign +
+                          +PackagingDesign +
+                          +Samples)
+                    );
                   }}
                   type="number"
                   min="0.00"
@@ -865,7 +913,7 @@ function App() {
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 InsertDesign:
               </td>
@@ -884,6 +932,16 @@ function App() {
                         +PackagingDesign +
                         +Samples
                     );
+                    setTotalOut(
+                      +TotalOutPerOrder * +Orders +
+                        (+LLC +
+                          +Trademark +
+                          +Photographing +
+                          +Unboxing +
+                          +e.target.value +
+                          +PackagingDesign +
+                          +Samples)
+                    );
                   }}
                   type="number"
                   min="0.00"
@@ -901,7 +959,7 @@ function App() {
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 PackagingDesign:
               </td>
@@ -920,41 +978,15 @@ function App() {
                         +e.target.value +
                         +Samples
                     );
-                  }}
-                  type="number"
-                  min="0.00"
-                  max="100000000.00"
-                  step="0.01"
-                />
-              </td>
-              <td
-                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
-              >
-                {"$"}
-              </td>
-            </div>
-          </tr>
-          <tr>
-            <div style={{ textAlign: "center" }}>
-              <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
-              >
-                Samples:
-              </td>
-              <td style={{ color: "blue", fontWeight: "bolder" }}>
-                <input
-                  style={{ width: "80px", textAlign: "center" }}
-                  value={parseInt(Samples * 100) / 100}
-                  onChange={(e) => {
-                    setSamples(+e.target.value);
-                    setTotalOneTime(
-                      +LLC +
-                        +Trademark +
-                        +Photographing +
-                        +Unboxing +
-                        +InsertDesign +
-                        +PackagingDesign +
-                        +e.target.value
+                    setTotalOut(
+                      +TotalOutPerOrder * +Orders +
+                        (+LLC +
+                          +Trademark +
+                          +Photographing +
+                          +Unboxing +
+                          +InsertDesign +
+                          +e.target.value +
+                          +Samples)
                     );
                   }}
                   type="number"
@@ -973,7 +1005,53 @@ function App() {
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
+              >
+                Samples:
+              </td>
+              <td style={{ color: "blue", fontWeight: "bolder" }}>
+                <input
+                  style={{ width: "80px", textAlign: "center" }}
+                  value={parseInt(Samples * 100) / 100}
+                  onChange={(e) => {
+                    setSamples(+e.target.value);
+                    setTotalOneTime(
+                      +LLC +
+                        +Trademark +
+                        +Photographing +
+                        +Unboxing +
+                        +InsertDesign +
+                        +PackagingDesign +
+                        +e.target.value
+                    );
+                    setTotalOut(
+                      +TotalOutPerOrder * +Orders +
+                        (+LLC +
+                          +Trademark +
+                          +Photographing +
+                          +Unboxing +
+                          +InsertDesign +
+                          +PackagingDesign +
+                          +e.target.value)
+                    );
+                  }}
+                  type="number"
+                  min="0.00"
+                  max="100000000.00"
+                  step="0.01"
+                />
+              </td>
+              <td
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
+              >
+                {"$"}
+              </td>
+            </div>
+          </tr>
+          <tr>
+            <div style={{ textAlign: "center" }}>
+              <td
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 TotalOneTime:
               </td>
@@ -998,7 +1076,7 @@ function App() {
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 UnitsInOrder:
               </td>
@@ -1008,7 +1086,17 @@ function App() {
                   value={parseInt(UnitsInOrder * 100) / 100}
                   onChange={(e) => {
                     setUnitsInOrder(+e.target.value);
-                    setTotalOutPerOrder(+e.target.value * +TotalOutPerUnit);
+                    setTotalOutPerOrder(
+                      +OneOrderTimeSAAS + +e.target.value * +TotalOutPerUnit
+                    );
+                    setTotalInPerOrder(+e.target.value * +Revenue);
+                    setMarginPerUnit(
+                      ((+e.target.value * +Revenue -
+                        +e.target.value * +TotalOutPerUnit) /
+                        (+e.target.value * +Revenue)) *
+                        100
+                    );
+                    setTotalIn(+e.target.value * +Revenue * +Orders);
                   }}
                   type="number"
                   min="0.00"
@@ -1019,14 +1107,14 @@ function App() {
               <td
                 style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
               >
-                {"$"}
+                {" "}
               </td>
             </div>
           </tr>
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 TotalOutPerOrder:
               </td>
@@ -1051,7 +1139,7 @@ function App() {
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 TotalInPerOrder:
               </td>
@@ -1059,13 +1147,11 @@ function App() {
                 <input
                   style={{ width: "80px", textAlign: "center" }}
                   value={parseInt(TotalInPerOrder * 100) / 100}
-                  onChange={(e) => {
-                    setTotalInPerOrder(+e.target.value);
-                  }}
                   type="number"
                   min="0.00"
                   max="100000000.00"
                   step="0.01"
+                  disabled
                 />
               </td>
               <td
@@ -1078,7 +1164,7 @@ function App() {
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 MarginPerUnit:
               </td>
@@ -1086,26 +1172,24 @@ function App() {
                 <input
                   style={{ width: "80px", textAlign: "center" }}
                   value={parseInt(MarginPerUnit * 100) / 100}
-                  onChange={(e) => {
-                    setMarginPerUnit(+e.target.value);
-                  }}
                   type="number"
                   min="0.00"
                   max="100000000.00"
                   step="0.01"
+                  disabled
                 />
               </td>
               <td
                 style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
               >
-                {"$"}
+                {"%"}
               </td>
             </div>
           </tr>
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 Orders:
               </td>
@@ -1115,6 +1199,20 @@ function App() {
                   value={parseInt(Orders * 100) / 100}
                   onChange={(e) => {
                     setOrders(+e.target.value);
+                    setTotalIn(+TotalInPerOrder * +e.target.value);
+                    setTotalOut(
+                      +TotalOutPerOrder * +e.target.value + +TotalOneTime
+                    );
+                    setTotalProfit(
+                      +TotalInPerOrder * +e.target.value -
+                        (+TotalOutPerOrder * +e.target.value + +TotalOneTime)
+                    );
+                    setTotalMargin(
+                      +TotalInPerOrder * +e.target.value -
+                        ((+TotalOutPerOrder * +e.target.value + +TotalOneTime) /
+                          (+TotalInPerOrder * +e.target.value)) *
+                          100
+                    );
                   }}
                   type="number"
                   min="0.00"
@@ -1125,14 +1223,14 @@ function App() {
               <td
                 style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
               >
-                {"$"}
+                {" "}
               </td>
             </div>
           </tr>
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 TotalIn:
               </td>
@@ -1140,13 +1238,11 @@ function App() {
                 <input
                   style={{ width: "80px", textAlign: "center" }}
                   value={parseInt(TotalIn * 100) / 100}
-                  onChange={(e) => {
-                    setTotalIn(+e.target.value);
-                  }}
                   type="number"
                   min="0.00"
                   max="100000000.00"
                   step="0.01"
+                  disabled
                 />
               </td>
               <td
@@ -1159,7 +1255,7 @@ function App() {
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 TotalOut:
               </td>
@@ -1167,13 +1263,11 @@ function App() {
                 <input
                   style={{ width: "80px", textAlign: "center" }}
                   value={parseInt(TotalOut * 100) / 100}
-                  onChange={(e) => {
-                    setTotalOut(+e.target.value);
-                  }}
                   type="number"
                   min="0.00"
                   max="100000000.00"
                   step="0.01"
+                  disabled
                 />
               </td>
               <td
@@ -1186,7 +1280,7 @@ function App() {
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 TotalProfit:
               </td>
@@ -1194,13 +1288,11 @@ function App() {
                 <input
                   style={{ width: "80px", textAlign: "center" }}
                   value={parseInt(TotalProfit * 100) / 100}
-                  onChange={(e) => {
-                    setTotalProfit(+e.target.value);
-                  }}
                   type="number"
                   min="0.00"
                   max="100000000.00"
                   step="0.01"
+                  disabled
                 />
               </td>
               <td
@@ -1213,7 +1305,7 @@ function App() {
           <tr>
             <div style={{ textAlign: "center" }}>
               <td
-                style={{ width: "135px", color: "blue", fontWeight: "bolder" }}
+                style={{ width: "154px", color: "blue", fontWeight: "bolder" }}
               >
                 TotalMargin:
               </td>
@@ -1221,19 +1313,17 @@ function App() {
                 <input
                   style={{ width: "80px", textAlign: "center" }}
                   value={parseInt(TotalMargin * 100) / 100}
-                  onChange={(e) => {
-                    setTotalMargin(+e.target.value);
-                  }}
                   type="number"
                   min="0.00"
                   max="100000000.00"
                   step="0.01"
+                  disabled
                 />
               </td>
               <td
                 style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
               >
-                {"$"}
+                {"%"}
               </td>
             </div>
           </tr>
