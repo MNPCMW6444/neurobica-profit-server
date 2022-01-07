@@ -1,0 +1,10 @@
+@font-face {
+  font-family: my;
+  src: url("./VarelaRound-Regular.ttf") format("truetype");
+}
+
+body {
+  min-width: 960px;
+  background-color: #ffffff;
+  font-family: my;
+}
