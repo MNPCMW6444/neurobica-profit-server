@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Chart from "./Chart";
+import ChartP from "./ChartP";
 
 function App() {
   const [Manufacturing, setManufacturing] = useState();
@@ -52,12 +53,23 @@ function App() {
     });
   }
 
+  let datap = [];
+  for (let i = 1; i < 10; i++) {
+    datap.push({
+      orderNo: i,
+      profit: Math.round(
+        +TotalInPerOrder * +i - (+TotalOutPerOrder * +i + +TotalOneTime)
+      ),
+      l0: 0,
+    });
+  }
+
   return (
     <>
       <div style={{ padding: "50px" }}>
-        <h1 style={{ textAlign: "left" }}>PF PC (Profitability Calclator)</h1>
-        <table /* style={{ marginLeft: "auto", marginRight: "auto" }} */>
-          <tbody style={{ textAlign: "left" }}>
+        <h1 style={{ textAlign: "center" }}>PF PC(Profitability Calclator)</h1>
+        <table style={{ marginLeft: "auto", marginRight: "auto" }}>
+          <tbody style={{ textAlign: "center" }}>
             <tr>
               <td
                 style={{
@@ -70,7 +82,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
-                  style={{ width: "80px", textAlign: "left" }}
+                  style={{ width: "80px", textAlign: "center" }}
                   value={Manufacturing}
                   onChange={(e) => {
                     setManufacturing(Math.round(+e.target.value * 100) / 100);
@@ -173,87 +185,7 @@ function App() {
                 />
               </td>
               <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
-              >
-                {"$"}
-              </td>
-              <td
-                style={{
-                  width: "154px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                }}
-              >
-                Trademark:
-              </td>
-              <td style={{ color: "blue", fontWeight: "bolder" }}>
-                <input
-                  style={{ width: "80px", textAlign: "left" }}
-                  value={Trademark}
-                  onChange={(e) => {
-                    setTrademark(Math.round(+e.target.value * 100) / 100);
-                    setTotalOneTime(
-                      +LLC +
-                        +e.target.value +
-                        +Photographing +
-                        +Unboxing +
-                        +InsertDesign +
-                        +PackagingDesign +
-                        +Samples
-                    );
-                    setTotalOut(
-                      +TotalOutPerOrder * +Orders +
-                        (+LLC +
-                          +e.target.value +
-                          +Photographing +
-                          +Unboxing +
-                          +InsertDesign +
-                          +PackagingDesign +
-                          +Samples)
-                    );
-                    setTotalProfit(
-                      TotalIn -
-                        (+TotalOutPerOrder * +Orders +
-                          (+LLC +
-                            +e.target.value +
-                            +Photographing +
-                            +Unboxing +
-                            +InsertDesign +
-                            +PackagingDesign +
-                            +Samples))
-                    );
-                    setTotalMargin(
-                      ((TotalIn -
-                        (+TotalOutPerOrder * +Orders +
-                          (+LLC +
-                            +e.target.value +
-                            +Photographing +
-                            +Unboxing +
-                            +InsertDesign +
-                            +PackagingDesign +
-                            +Samples))) /
-                        +TotalIn) *
-                        100
-                    );
-                  }}
-                  type="number"
-                  min="0.00"
-                  max="100000000.00"
-                  step="0.01"
-                />
-              </td>
-              <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
               >
                 {"$"}
               </td>
@@ -270,7 +202,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
-                  style={{ width: "80px", textAlign: "left" }}
+                  style={{ width: "80px", textAlign: "center" }}
                   value={Inspection}
                   onChange={(e) => {
                     setInspection(Math.round(+e.target.value * 100) / 100);
@@ -375,87 +307,7 @@ function App() {
                 />
               </td>
               <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
-              >
-                {"$"}
-              </td>
-              <td
-                style={{
-                  width: "154px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                }}
-              >
-                Unboxing:
-              </td>
-              <td style={{ color: "blue", fontWeight: "bolder" }}>
-                <input
-                  style={{ width: "80px", textAlign: "left" }}
-                  value={Unboxing}
-                  onChange={(e) => {
-                    setUnboxing(Math.round(+e.target.value * 100) / 100);
-                    setTotalOneTime(
-                      +LLC +
-                        +Trademark +
-                        +Photographing +
-                        +e.target.value +
-                        +InsertDesign +
-                        +PackagingDesign +
-                        +Samples
-                    );
-                    setTotalOut(
-                      +TotalOutPerOrder * +Orders +
-                        (+LLC +
-                          +Trademark +
-                          +Photographing +
-                          +e.target.value +
-                          +InsertDesign +
-                          +PackagingDesign +
-                          +Samples)
-                    );
-                    setTotalProfit(
-                      TotalIn -
-                        (+TotalOutPerOrder * +Orders +
-                          (+LLC +
-                            +Trademark +
-                            +Photographing +
-                            +e.target.value +
-                            +InsertDesign +
-                            +PackagingDesign +
-                            +Samples))
-                    );
-                    setTotalMargin(
-                      ((TotalIn -
-                        (+TotalOutPerOrder * +Orders +
-                          (+LLC +
-                            +Trademark +
-                            +Photographing +
-                            +e.target.value +
-                            +InsertDesign +
-                            +PackagingDesign +
-                            +Samples))) /
-                        +TotalIn) *
-                        100
-                    );
-                  }}
-                  type="number"
-                  min="0.00"
-                  max="100000000.00"
-                  step="0.01"
-                />
-              </td>
-              <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
               >
                 {"$"}
               </td>
@@ -472,7 +324,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
-                  style={{ width: "80px", textAlign: "left" }}
+                  style={{ width: "80px", textAlign: "center" }}
                   value={Packaging}
                   onChange={(e) => {
                     setPackaging(Math.round(+e.target.value * 100) / 100);
@@ -577,87 +429,7 @@ function App() {
                 />
               </td>
               <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
-              >
-                {"$"}
-              </td>
-              <td
-                style={{
-                  width: "154px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                }}
-              >
-                Photographing:
-              </td>
-              <td style={{ color: "blue", fontWeight: "bolder" }}>
-                <input
-                  style={{ width: "80px", textAlign: "left" }}
-                  value={Photographing}
-                  onChange={(e) => {
-                    setPhotographing(Math.round(+e.target.value * 100) / 100);
-                    setTotalOneTime(
-                      +LLC +
-                        +Trademark +
-                        +e.target.value +
-                        +Unboxing +
-                        +InsertDesign +
-                        +PackagingDesign +
-                        +Samples
-                    );
-                    setTotalOut(
-                      +TotalOutPerOrder * +Orders +
-                        (+LLC +
-                          +Trademark +
-                          +e.target.value +
-                          +Unboxing +
-                          +InsertDesign +
-                          +PackagingDesign +
-                          +Samples)
-                    );
-                    setTotalProfit(
-                      TotalIn -
-                        (+TotalOutPerOrder * +Orders +
-                          (+LLC +
-                            +Trademark +
-                            +e.target.value +
-                            +Unboxing +
-                            +InsertDesign +
-                            +PackagingDesign +
-                            +Samples))
-                    );
-                    setTotalMargin(
-                      ((TotalIn -
-                        (+TotalOutPerOrder * +Orders +
-                          (+LLC +
-                            +Trademark +
-                            +e.target.value +
-                            +Unboxing +
-                            +InsertDesign +
-                            +PackagingDesign +
-                            +Samples))) /
-                        +TotalIn) *
-                        100
-                    );
-                  }}
-                  type="number"
-                  min="0.00"
-                  max="100000000.00"
-                  step="0.01"
-                />
-              </td>
-              <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
               >
                 {"$"}
               </td>
@@ -674,7 +446,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
-                  style={{ width: "80px", textAlign: "left" }}
+                  style={{ width: "80px", textAlign: "center" }}
                   value={Math.round(Production * 100) / 100}
                   type="number"
                   min="0.00"
@@ -684,87 +456,7 @@ function App() {
                 />
               </td>
               <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
-              >
-                {"$"}
-              </td>
-              <td
-                style={{
-                  width: "154px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                }}
-              >
-                PackagingDesign:
-              </td>
-              <td style={{ color: "blue", fontWeight: "bolder" }}>
-                <input
-                  style={{ width: "80px", textAlign: "left" }}
-                  value={PackagingDesign}
-                  onChange={(e) => {
-                    setPackagingDesign(Math.round(+e.target.value * 100) / 100);
-                    setTotalOneTime(
-                      +LLC +
-                        +Trademark +
-                        +Photographing +
-                        +Unboxing +
-                        +InsertDesign +
-                        +e.target.value +
-                        +Samples
-                    );
-                    setTotalOut(
-                      +TotalOutPerOrder * +Orders +
-                        (+LLC +
-                          +Trademark +
-                          +Photographing +
-                          +Unboxing +
-                          +InsertDesign +
-                          +e.target.value +
-                          +Samples)
-                    );
-                    setTotalProfit(
-                      TotalIn -
-                        (+TotalOutPerOrder * +Orders +
-                          (+LLC +
-                            +Trademark +
-                            +Photographing +
-                            +Unboxing +
-                            +InsertDesign +
-                            +e.target.value +
-                            +Samples))
-                    );
-                    setTotalMargin(
-                      ((TotalIn -
-                        (+TotalOutPerOrder * +Orders +
-                          (+LLC +
-                            +Trademark +
-                            +Photographing +
-                            +Unboxing +
-                            +InsertDesign +
-                            +e.target.value +
-                            +Samples))) /
-                        +TotalIn) *
-                        100
-                    );
-                  }}
-                  type="number"
-                  min="0.00"
-                  max="100000000.00"
-                  step="0.01"
-                />
-              </td>
-              <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
               >
                 {"$"}
               </td>
@@ -777,11 +469,11 @@ function App() {
                   fontWeight: "bolder",
                 }}
               >
-                Freights:
+                Freights:{" "}
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
-                  style={{ width: "80px", textAlign: "left" }}
+                  style={{ width: "80px", textAlign: "center" }}
                   value={Freights}
                   onChange={(e) => {
                     setFreights(Math.round(+e.target.value * 100) / 100);
@@ -881,87 +573,7 @@ function App() {
                 />
               </td>
               <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
-              >
-                {"$"}
-              </td>
-              <td
-                style={{
-                  width: "154px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                }}
-              >
-                InsertDesign:
-              </td>
-              <td style={{ color: "blue", fontWeight: "bolder" }}>
-                <input
-                  style={{ width: "80px", textAlign: "left" }}
-                  value={InsertDesign}
-                  onChange={(e) => {
-                    setInsertDesign(Math.round(+e.target.value * 100) / 100);
-                    setTotalOneTime(
-                      +LLC +
-                        +Trademark +
-                        +Photographing +
-                        +Unboxing +
-                        +e.target.value +
-                        +PackagingDesign +
-                        +Samples
-                    );
-                    setTotalOut(
-                      +TotalOutPerOrder * +Orders +
-                        (+LLC +
-                          +Trademark +
-                          +Photographing +
-                          +Unboxing +
-                          +e.target.value +
-                          +PackagingDesign +
-                          +Samples)
-                    );
-                    setTotalProfit(
-                      TotalIn -
-                        (+TotalOutPerOrder * +Orders +
-                          (+LLC +
-                            +Trademark +
-                            +Photographing +
-                            +Unboxing +
-                            +e.target.value +
-                            +PackagingDesign +
-                            +Samples))
-                    );
-                    setTotalMargin(
-                      ((TotalIn -
-                        (+TotalOutPerOrder * +Orders +
-                          (+LLC +
-                            +Trademark +
-                            +Photographing +
-                            +Unboxing +
-                            +e.target.value +
-                            +PackagingDesign +
-                            +Samples))) /
-                        +TotalIn) *
-                        100
-                    );
-                  }}
-                  type="number"
-                  min="0.00"
-                  max="100000000.00"
-                  step="0.01"
-                />
-              </td>
-              <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
               >
                 {"$"}
               </td>
@@ -978,7 +590,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
-                  style={{ width: "80px", textAlign: "left" }}
+                  style={{ width: "80px", textAlign: "center" }}
                   value={Math.round(Landingcost * 100) / 100}
                   type="number"
                   min="0.00"
@@ -988,87 +600,7 @@ function App() {
                 />
               </td>
               <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
-              >
-                {"$"}
-              </td>
-              <td
-                style={{
-                  width: "154px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                }}
-              >
-                Samples:
-              </td>
-              <td style={{ color: "blue", fontWeight: "bolder" }}>
-                <input
-                  style={{ width: "80px", textAlign: "left" }}
-                  value={Samples}
-                  onChange={(e) => {
-                    setSamples(Math.round(+e.target.value * 100) / 100);
-                    setTotalOneTime(
-                      +LLC +
-                        +Trademark +
-                        +Photographing +
-                        +Unboxing +
-                        +InsertDesign +
-                        +PackagingDesign +
-                        +e.target.value
-                    );
-                    setTotalOut(
-                      +TotalOutPerOrder * +Orders +
-                        (+LLC +
-                          +Trademark +
-                          +Photographing +
-                          +Unboxing +
-                          +InsertDesign +
-                          +PackagingDesign +
-                          +e.target.value)
-                    );
-                    setTotalProfit(
-                      TotalIn -
-                        (+TotalOutPerOrder * +Orders +
-                          (+LLC +
-                            +Trademark +
-                            +Photographing +
-                            +Unboxing +
-                            +InsertDesign +
-                            +PackagingDesign +
-                            +e.target.value))
-                    );
-                    setTotalMargin(
-                      ((TotalIn -
-                        (+TotalOutPerOrder * +Orders +
-                          (+LLC +
-                            +Trademark +
-                            +Photographing +
-                            +Unboxing +
-                            +InsertDesign +
-                            +PackagingDesign +
-                            +e.target.value))) /
-                        +TotalIn) *
-                        100
-                    );
-                  }}
-                  type="number"
-                  min="0.00"
-                  max="100000000.00"
-                  step="0.01"
-                />
-              </td>
-              <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
               >
                 {"$"}
               </td>
@@ -1081,11 +613,11 @@ function App() {
                   fontWeight: "bolder",
                 }}
               >
-                Insert:
+                Insert:{" "}
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
-                  style={{ width: "80px", textAlign: "left" }}
+                  style={{ width: "80px", textAlign: "center" }}
                   value={Insert}
                   onChange={(e) => {
                     setInsert(Math.round(+e.target.value * 100) / 100);
@@ -1184,42 +716,7 @@ function App() {
                 />
               </td>
               <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
-              >
-                {"$"}
-              </td>
-              <td
-                style={{
-                  width: "154px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                }}
-              >
-                TotalOneTime:
-              </td>
-              <td style={{ color: "blue", fontWeight: "bolder" }}>
-                <input
-                  style={{ width: "80px", textAlign: "left" }}
-                  value={Math.round(TotalOneTime * 100) / 100}
-                  type="number"
-                  min="0.00"
-                  max="100000000.00"
-                  step="0.01"
-                  disabled
-                />
-              </td>
-              <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
               >
                 {"$"}
               </td>
@@ -1232,11 +729,11 @@ function App() {
                   fontWeight: "bolder",
                 }}
               >
-                PPC:
+                PPC:{" "}
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
-                  style={{ width: "80px", textAlign: "left" }}
+                  style={{ width: "80px", textAlign: "center" }}
                   value={PPC}
                   onChange={(e) => {
                     setPPC(Math.round(+e.target.value * 100) / 100);
@@ -1335,74 +832,10 @@ function App() {
                 />
               </td>
               <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
               >
                 {"$"}
               </td>
-              <td
-                style={{
-                  width: "154px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                }}
-              >
-                UnitsInOrder:
-              </td>
-              <td style={{ color: "blue", fontWeight: "bolder" }}>
-                <input
-                  style={{ width: "80px", textAlign: "left" }}
-                  value={UnitsInOrder}
-                  onChange={(e) => {
-                    setUnitsInOrder(Math.round(+e.target.value * 100) / 100);
-                    setMarginPerUnit(
-                      ((+e.target.value * +Revenue -
-                        +e.target.value * +TotalOutPerUnit) /
-                        (+e.target.value * +Revenue)) *
-                        100
-                    );
-                    setTotalOutPerOrder(
-                      +OneOrderTimeSAAS + +e.target.value * +TotalOutPerUnit
-                    );
-                    setTotalInPerOrder(+e.target.value * +Revenue);
-                    setTotalIn(+e.target.value * +Revenue * +Orders);
-                    setTotalOut(
-                      (+OneOrderTimeSAAS + +e.target.value * +TotalOutPerUnit) *
-                        +Orders
-                    );
-                    setTotalProfit(
-                      +TotalIn -
-                        (+OneOrderTimeSAAS +
-                          +e.target.value * +TotalOutPerUnit) *
-                          +Orders
-                    );
-                    setTotalMargin(
-                      ((+TotalIn -
-                        (+OneOrderTimeSAAS +
-                          +e.target.value * +TotalOutPerUnit) *
-                          +Orders) /
-                        +TotalIn) *
-                        100
-                    );
-                  }}
-                  type="number"
-                  min="0.00"
-                  max="100000000.00"
-                  step="0.01"
-                />
-              </td>
-              <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
-              ></td>
             </tr>
             <tr>
               <td
@@ -1412,11 +845,11 @@ function App() {
                   fontWeight: "bolder",
                 }}
               >
-                Listing:
+                Listing:{" "}
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
-                  style={{ width: "80px", textAlign: "left" }}
+                  style={{ width: "80px", textAlign: "center" }}
                   value={Math.round(Listing * 100) / 100}
                   type="number"
                   min="0.00"
@@ -1426,42 +859,7 @@ function App() {
                 />
               </td>
               <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
-              >
-                {"$"}
-              </td>
-              <td
-                style={{
-                  width: "154px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                }}
-              >
-                TotalOutPerOrder:
-              </td>
-              <td style={{ color: "blue", fontWeight: "bolder" }}>
-                <input
-                  style={{ width: "80px", textAlign: "left" }}
-                  value={Math.round(TotalOutPerOrder * 100) / 100}
-                  type="number"
-                  min="0.00"
-                  max="100000000.00"
-                  step="0.01"
-                  disabled
-                />
-              </td>
-              <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
               >
                 {"$"}
               </td>
@@ -1478,7 +876,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
-                  style={{ width: "80px", textAlign: "left" }}
+                  style={{ width: "80px", textAlign: "center" }}
                   value={Revenue}
                   onChange={(e) => {
                     setRevenue(Math.round(+e.target.value * 100) / 100);
@@ -1576,42 +974,7 @@ function App() {
                 />
               </td>
               <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
-              >
-                {"$"}
-              </td>
-              <td
-                style={{
-                  width: "154px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                }}
-              >
-                TotalInPerOrder:
-              </td>
-              <td style={{ color: "blue", fontWeight: "bolder" }}>
-                <input
-                  style={{ width: "80px", textAlign: "left" }}
-                  value={Math.round(TotalInPerOrder * 100) / 100}
-                  type="number"
-                  min="0.00"
-                  max="100000000.00"
-                  step="0.01"
-                  disabled
-                />
-              </td>
-              <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
               >
                 {"$"}
               </td>
@@ -1624,11 +987,11 @@ function App() {
                   fontWeight: "bolder",
                 }}
               >
-                RefFee:
+                RefFee:{" "}
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
-                  style={{ width: "80px", textAlign: "left" }}
+                  style={{ width: "80px", textAlign: "center" }}
                   value={Math.round(RefFee * 100) / 100}
                   type="number"
                   min="0.00"
@@ -1638,44 +1001,9 @@ function App() {
                 />
               </td>
               <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
               >
                 {"$"}
-              </td>
-              <td
-                style={{
-                  width: "154px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                }}
-              >
-                MarginPerUnit:
-              </td>
-              <td style={{ color: "blue", fontWeight: "bolder" }}>
-                <input
-                  style={{ width: "80px", textAlign: "left" }}
-                  value={Math.round(MarginPerUnit * 100) / 100}
-                  type="number"
-                  min="0.00"
-                  max="100000000.00"
-                  step="0.01"
-                  disabled
-                />
-              </td>
-              <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
-              >
-                {"%"}
               </td>
             </tr>
             <tr>
@@ -1686,11 +1014,11 @@ function App() {
                   fontWeight: "bolder",
                 }}
               >
-                FBAFee:
+                FBAFee:{" "}
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
-                  style={{ width: "80px", textAlign: "left" }}
+                  style={{ width: "80px", textAlign: "center" }}
                   value={Math.round(FBAFee * 100) / 100}
                   type="number"
                   min="0.00"
@@ -1700,62 +1028,10 @@ function App() {
                 />
               </td>
               <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
               >
                 {"$"}
               </td>
-              <td
-                style={{
-                  width: "154px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                }}
-              >
-                Orders:
-              </td>
-              <td style={{ color: "blue", fontWeight: "bolder" }}>
-                <input
-                  style={{ width: "80px", textAlign: "left" }}
-                  value={Orders}
-                  onChange={(e) => {
-                    setOrders(Math.round(+e.target.value * 100) / 100);
-                    setTotalSAAS(+e.target.value * OneOrderTimeSAAS);
-                    setTotalIn(+TotalInPerOrder * +e.target.value);
-                    setTotalOut(
-                      +TotalOutPerOrder * +e.target.value +
-                        +TotalOneTime +
-                        +e.target.value * OneOrderTimeSAAS
-                    );
-                    setTotalProfit(
-                      +TotalInPerOrder * +e.target.value -
-                        (+TotalOutPerOrder * +e.target.value + +TotalOneTime)
-                    );
-                    setTotalMargin(
-                      ((+TotalInPerOrder * +e.target.value -
-                        (+TotalOutPerOrder * +e.target.value + +TotalOneTime)) /
-                        (+TotalInPerOrder * +e.target.value)) *
-                        100
-                    );
-                  }}
-                  type="number"
-                  min="0.00"
-                  max="100000000.00"
-                  step="0.01"
-                />
-              </td>
-              <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
-              ></td>
             </tr>
             <tr>
               <td
@@ -1769,7 +1045,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
-                  style={{ width: "80px", textAlign: "left" }}
+                  style={{ width: "80px", textAlign: "center" }}
                   value={Math.round(TotalOutPerUnit * 100) / 100}
                   type="number"
                   min="0.00"
@@ -1779,42 +1055,7 @@ function App() {
                 />
               </td>
               <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
-              >
-                {"$"}
-              </td>
-              <td
-                style={{
-                  width: "154px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                }}
-              >
-                TotalIn:
-              </td>
-              <td style={{ color: "blue", fontWeight: "bolder" }}>
-                <input
-                  style={{ width: "80px", textAlign: "left" }}
-                  value={Math.round(TotalIn * 100) / 100}
-                  type="number"
-                  min="0.00"
-                  max="100000000.00"
-                  step="0.01"
-                  disabled
-                />
-              </td>
-              <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
               >
                 {"$"}
               </td>
@@ -1831,7 +1072,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
-                  style={{ width: "80px", textAlign: "left" }}
+                  style={{ width: "80px", textAlign: "center" }}
                   value={OneOrderTimeSAAS}
                   onChange={(e) => {
                     setOneOrderTimeSAAS(
@@ -1901,42 +1142,7 @@ function App() {
                 />
               </td>
               <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
-              >
-                {"$"}
-              </td>
-              <td
-                style={{
-                  width: "154px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                }}
-              >
-                TotalOut:
-              </td>
-              <td style={{ color: "blue", fontWeight: "bolder" }}>
-                <input
-                  style={{ width: "80px", textAlign: "left" }}
-                  value={Math.round(TotalOut * 100) / 100}
-                  type="number"
-                  min="0.00"
-                  max="100000000.00"
-                  step="0.01"
-                  disabled
-                />
-              </td>
-              <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
               >
                 {"$"}
               </td>
@@ -1953,7 +1159,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
-                  style={{ width: "80px", textAlign: "left" }}
+                  style={{ width: "80px", textAlign: "center" }}
                   value={Math.round(TotalSAAS * 100) / 100}
                   type="number"
                   min="0.00"
@@ -1963,42 +1169,7 @@ function App() {
                 />
               </td>
               <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
-              >
-                {"$"}
-              </td>
-              <td
-                style={{
-                  width: "154px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                }}
-              >
-                TotalProfit:
-              </td>
-              <td style={{ color: "blue", fontWeight: "bolder" }}>
-                <input
-                  style={{ width: "80px", textAlign: "left" }}
-                  value={Math.round(TotalProfit * 100) / 100}
-                  type="number"
-                  min="0.00"
-                  max="100000000.00"
-                  step="0.01"
-                  disabled
-                />
-              </td>
-              <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
               >
                 {"$"}
               </td>
@@ -2015,7 +1186,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
-                  style={{ width: "80px", textAlign: "left" }}
+                  style={{ width: "80px", textAlign: "center" }}
                   value={LLC}
                   onChange={(e) => {
                     setLLC(Math.round(+e.target.value * 100) / 100);
@@ -2070,15 +1241,737 @@ function App() {
                 />
               </td>
               <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
               >
                 {"$"}
               </td>
+            </tr>
+            <tr>
+              <td
+                style={{
+                  width: "154px",
+                  color: "blue",
+                  fontWeight: "bolder",
+                }}
+              >
+                Trademark:
+              </td>
+              <td style={{ color: "blue", fontWeight: "bolder" }}>
+                <input
+                  style={{ width: "80px", textAlign: "center" }}
+                  value={Trademark}
+                  onChange={(e) => {
+                    setTrademark(Math.round(+e.target.value * 100) / 100);
+                    setTotalOneTime(
+                      +LLC +
+                        +e.target.value +
+                        +Photographing +
+                        +Unboxing +
+                        +InsertDesign +
+                        +PackagingDesign +
+                        +Samples
+                    );
+                    setTotalOut(
+                      +TotalOutPerOrder * +Orders +
+                        (+LLC +
+                          +e.target.value +
+                          +Photographing +
+                          +Unboxing +
+                          +InsertDesign +
+                          +PackagingDesign +
+                          +Samples)
+                    );
+                    setTotalProfit(
+                      TotalIn -
+                        (+TotalOutPerOrder * +Orders +
+                          (+LLC +
+                            +e.target.value +
+                            +Photographing +
+                            +Unboxing +
+                            +InsertDesign +
+                            +PackagingDesign +
+                            +Samples))
+                    );
+                    setTotalMargin(
+                      ((TotalIn -
+                        (+TotalOutPerOrder * +Orders +
+                          (+LLC +
+                            +e.target.value +
+                            +Photographing +
+                            +Unboxing +
+                            +InsertDesign +
+                            +PackagingDesign +
+                            +Samples))) /
+                        +TotalIn) *
+                        100
+                    );
+                  }}
+                  type="number"
+                  min="0.00"
+                  max="100000000.00"
+                  step="0.01"
+                />
+              </td>
+              <td
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
+              >
+                {"$"}
+              </td>
+            </tr>
+            <tr>
+              <td
+                style={{
+                  width: "154px",
+                  color: "blue",
+                  fontWeight: "bolder",
+                }}
+              >
+                Photographing:
+              </td>
+              <td style={{ color: "blue", fontWeight: "bolder" }}>
+                <input
+                  style={{ width: "80px", textAlign: "center" }}
+                  value={Photographing}
+                  onChange={(e) => {
+                    setPhotographing(Math.round(+e.target.value * 100) / 100);
+                    setTotalOneTime(
+                      +LLC +
+                        +Trademark +
+                        +e.target.value +
+                        +Unboxing +
+                        +InsertDesign +
+                        +PackagingDesign +
+                        +Samples
+                    );
+                    setTotalOut(
+                      +TotalOutPerOrder * +Orders +
+                        (+LLC +
+                          +Trademark +
+                          +e.target.value +
+                          +Unboxing +
+                          +InsertDesign +
+                          +PackagingDesign +
+                          +Samples)
+                    );
+                    setTotalProfit(
+                      TotalIn -
+                        (+TotalOutPerOrder * +Orders +
+                          (+LLC +
+                            +Trademark +
+                            +e.target.value +
+                            +Unboxing +
+                            +InsertDesign +
+                            +PackagingDesign +
+                            +Samples))
+                    );
+                    setTotalMargin(
+                      ((TotalIn -
+                        (+TotalOutPerOrder * +Orders +
+                          (+LLC +
+                            +Trademark +
+                            +e.target.value +
+                            +Unboxing +
+                            +InsertDesign +
+                            +PackagingDesign +
+                            +Samples))) /
+                        +TotalIn) *
+                        100
+                    );
+                  }}
+                  type="number"
+                  min="0.00"
+                  max="100000000.00"
+                  step="0.01"
+                />
+              </td>
+              <td
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
+              >
+                {"$"}
+              </td>
+            </tr>
+            <tr>
+              <td
+                style={{
+                  width: "154px",
+                  color: "blue",
+                  fontWeight: "bolder",
+                }}
+              >
+                Unboxing:
+              </td>
+              <td style={{ color: "blue", fontWeight: "bolder" }}>
+                <input
+                  style={{ width: "80px", textAlign: "center" }}
+                  value={Unboxing}
+                  onChange={(e) => {
+                    setUnboxing(Math.round(+e.target.value * 100) / 100);
+                    setTotalOneTime(
+                      +LLC +
+                        +Trademark +
+                        +Photographing +
+                        +e.target.value +
+                        +InsertDesign +
+                        +PackagingDesign +
+                        +Samples
+                    );
+                    setTotalOut(
+                      +TotalOutPerOrder * +Orders +
+                        (+LLC +
+                          +Trademark +
+                          +Photographing +
+                          +e.target.value +
+                          +InsertDesign +
+                          +PackagingDesign +
+                          +Samples)
+                    );
+                    setTotalProfit(
+                      TotalIn -
+                        (+TotalOutPerOrder * +Orders +
+                          (+LLC +
+                            +Trademark +
+                            +Photographing +
+                            +e.target.value +
+                            +InsertDesign +
+                            +PackagingDesign +
+                            +Samples))
+                    );
+                    setTotalMargin(
+                      ((TotalIn -
+                        (+TotalOutPerOrder * +Orders +
+                          (+LLC +
+                            +Trademark +
+                            +Photographing +
+                            +e.target.value +
+                            +InsertDesign +
+                            +PackagingDesign +
+                            +Samples))) /
+                        +TotalIn) *
+                        100
+                    );
+                  }}
+                  type="number"
+                  min="0.00"
+                  max="100000000.00"
+                  step="0.01"
+                />
+              </td>
+              <td
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
+              >
+                {"$"}
+              </td>
+            </tr>
+            <tr>
+              <td
+                style={{
+                  width: "154px",
+                  color: "blue",
+                  fontWeight: "bolder",
+                }}
+              >
+                InsertDesign:
+              </td>
+              <td style={{ color: "blue", fontWeight: "bolder" }}>
+                <input
+                  style={{ width: "80px", textAlign: "center" }}
+                  value={InsertDesign}
+                  onChange={(e) => {
+                    setInsertDesign(Math.round(+e.target.value * 100) / 100);
+                    setTotalOneTime(
+                      +LLC +
+                        +Trademark +
+                        +Photographing +
+                        +Unboxing +
+                        +e.target.value +
+                        +PackagingDesign +
+                        +Samples
+                    );
+                    setTotalOut(
+                      +TotalOutPerOrder * +Orders +
+                        (+LLC +
+                          +Trademark +
+                          +Photographing +
+                          +Unboxing +
+                          +e.target.value +
+                          +PackagingDesign +
+                          +Samples)
+                    );
+                    setTotalProfit(
+                      TotalIn -
+                        (+TotalOutPerOrder * +Orders +
+                          (+LLC +
+                            +Trademark +
+                            +Photographing +
+                            +Unboxing +
+                            +e.target.value +
+                            +PackagingDesign +
+                            +Samples))
+                    );
+                    setTotalMargin(
+                      ((TotalIn -
+                        (+TotalOutPerOrder * +Orders +
+                          (+LLC +
+                            +Trademark +
+                            +Photographing +
+                            +Unboxing +
+                            +e.target.value +
+                            +PackagingDesign +
+                            +Samples))) /
+                        +TotalIn) *
+                        100
+                    );
+                  }}
+                  type="number"
+                  min="0.00"
+                  max="100000000.00"
+                  step="0.01"
+                />
+              </td>
+              <td
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
+              >
+                {"$"}
+              </td>
+            </tr>
+            <tr>
+              <td
+                style={{
+                  width: "154px",
+                  color: "blue",
+                  fontWeight: "bolder",
+                }}
+              >
+                PackagingDesign:
+              </td>
+              <td style={{ color: "blue", fontWeight: "bolder" }}>
+                <input
+                  style={{ width: "80px", textAlign: "center" }}
+                  value={PackagingDesign}
+                  onChange={(e) => {
+                    setPackagingDesign(Math.round(+e.target.value * 100) / 100);
+                    setTotalOneTime(
+                      +LLC +
+                        +Trademark +
+                        +Photographing +
+                        +Unboxing +
+                        +InsertDesign +
+                        +e.target.value +
+                        +Samples
+                    );
+                    setTotalOut(
+                      +TotalOutPerOrder * +Orders +
+                        (+LLC +
+                          +Trademark +
+                          +Photographing +
+                          +Unboxing +
+                          +InsertDesign +
+                          +e.target.value +
+                          +Samples)
+                    );
+                    setTotalProfit(
+                      TotalIn -
+                        (+TotalOutPerOrder * +Orders +
+                          (+LLC +
+                            +Trademark +
+                            +Photographing +
+                            +Unboxing +
+                            +InsertDesign +
+                            +e.target.value +
+                            +Samples))
+                    );
+                    setTotalMargin(
+                      ((TotalIn -
+                        (+TotalOutPerOrder * +Orders +
+                          (+LLC +
+                            +Trademark +
+                            +Photographing +
+                            +Unboxing +
+                            +InsertDesign +
+                            +e.target.value +
+                            +Samples))) /
+                        +TotalIn) *
+                        100
+                    );
+                  }}
+                  type="number"
+                  min="0.00"
+                  max="100000000.00"
+                  step="0.01"
+                />
+              </td>
+              <td
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
+              >
+                {"$"}
+              </td>
+            </tr>
+            <tr>
+              <td
+                style={{
+                  width: "154px",
+                  color: "blue",
+                  fontWeight: "bolder",
+                }}
+              >
+                Samples:
+              </td>
+              <td style={{ color: "blue", fontWeight: "bolder" }}>
+                <input
+                  style={{ width: "80px", textAlign: "center" }}
+                  value={Samples}
+                  onChange={(e) => {
+                    setSamples(Math.round(+e.target.value * 100) / 100);
+                    setTotalOneTime(
+                      +LLC +
+                        +Trademark +
+                        +Photographing +
+                        +Unboxing +
+                        +InsertDesign +
+                        +PackagingDesign +
+                        +e.target.value
+                    );
+                    setTotalOut(
+                      +TotalOutPerOrder * +Orders +
+                        (+LLC +
+                          +Trademark +
+                          +Photographing +
+                          +Unboxing +
+                          +InsertDesign +
+                          +PackagingDesign +
+                          +e.target.value)
+                    );
+                    setTotalProfit(
+                      TotalIn -
+                        (+TotalOutPerOrder * +Orders +
+                          (+LLC +
+                            +Trademark +
+                            +Photographing +
+                            +Unboxing +
+                            +InsertDesign +
+                            +PackagingDesign +
+                            +e.target.value))
+                    );
+                    setTotalMargin(
+                      ((TotalIn -
+                        (+TotalOutPerOrder * +Orders +
+                          (+LLC +
+                            +Trademark +
+                            +Photographing +
+                            +Unboxing +
+                            +InsertDesign +
+                            +PackagingDesign +
+                            +e.target.value))) /
+                        +TotalIn) *
+                        100
+                    );
+                  }}
+                  type="number"
+                  min="0.00"
+                  max="100000000.00"
+                  step="0.01"
+                />
+              </td>
+              <td
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
+              >
+                {"$"}
+              </td>
+            </tr>
+            <tr>
+              <td
+                style={{
+                  width: "154px",
+                  color: "blue",
+                  fontWeight: "bolder",
+                }}
+              >
+                TotalOneTime:
+              </td>
+              <td style={{ color: "blue", fontWeight: "bolder" }}>
+                <input
+                  style={{ width: "80px", textAlign: "center" }}
+                  value={Math.round(TotalOneTime * 100) / 100}
+                  type="number"
+                  min="0.00"
+                  max="100000000.00"
+                  step="0.01"
+                  disabled
+                />
+              </td>
+              <td
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
+              >
+                {"$"}
+              </td>
+            </tr>
+            <tr>
+              <td
+                style={{
+                  width: "154px",
+                  color: "blue",
+                  fontWeight: "bolder",
+                }}
+              >
+                UnitsInOrder:
+              </td>
+              <td style={{ color: "blue", fontWeight: "bolder" }}>
+                <input
+                  style={{ width: "80px", textAlign: "center" }}
+                  value={UnitsInOrder}
+                  onChange={(e) => {
+                    setUnitsInOrder(Math.round(+e.target.value * 100) / 100);
+                    setMarginPerUnit(
+                      ((+e.target.value * +Revenue -
+                        +e.target.value * +TotalOutPerUnit) /
+                        (+e.target.value * +Revenue)) *
+                        100
+                    );
+                    setTotalOutPerOrder(
+                      +OneOrderTimeSAAS + +e.target.value * +TotalOutPerUnit
+                    );
+                    setTotalInPerOrder(+e.target.value * +Revenue);
+                    setTotalIn(+e.target.value * +Revenue * +Orders);
+                    setTotalOut(
+                      (+OneOrderTimeSAAS + +e.target.value * +TotalOutPerUnit) *
+                        +Orders
+                    );
+                    setTotalProfit(
+                      +TotalIn -
+                        (+OneOrderTimeSAAS +
+                          +e.target.value * +TotalOutPerUnit) *
+                          +Orders
+                    );
+                    setTotalMargin(
+                      ((+TotalIn -
+                        (+OneOrderTimeSAAS +
+                          +e.target.value * +TotalOutPerUnit) *
+                          +Orders) /
+                        +TotalIn) *
+                        100
+                    );
+                  }}
+                  type="number"
+                  min="0.00"
+                  max="100000000.00"
+                  step="0.01"
+                />
+              </td>
+              <td
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
+              >
+                {" "}
+              </td>
+            </tr>
+            <tr>
+              <td
+                style={{
+                  width: "154px",
+                  color: "blue",
+                  fontWeight: "bolder",
+                }}
+              >
+                TotalOutPerOrder:
+              </td>
+              <td style={{ color: "blue", fontWeight: "bolder" }}>
+                <input
+                  style={{ width: "80px", textAlign: "center" }}
+                  value={Math.round(TotalOutPerOrder * 100) / 100}
+                  type="number"
+                  min="0.00"
+                  max="100000000.00"
+                  step="0.01"
+                  disabled
+                />
+              </td>
+              <td
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
+              >
+                {"$"}
+              </td>
+            </tr>
+            <tr>
+              <td
+                style={{
+                  width: "154px",
+                  color: "blue",
+                  fontWeight: "bolder",
+                }}
+              >
+                TotalInPerOrder:
+              </td>
+              <td style={{ color: "blue", fontWeight: "bolder" }}>
+                <input
+                  style={{ width: "80px", textAlign: "center" }}
+                  value={Math.round(TotalInPerOrder * 100) / 100}
+                  type="number"
+                  min="0.00"
+                  max="100000000.00"
+                  step="0.01"
+                  disabled
+                />
+              </td>
+              <td
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
+              >
+                {"$"}
+              </td>
+            </tr>
+            <tr>
+              <td
+                style={{
+                  width: "154px",
+                  color: "blue",
+                  fontWeight: "bolder",
+                }}
+              >
+                MarginPerUnit:
+              </td>
+              <td style={{ color: "blue", fontWeight: "bolder" }}>
+                <input
+                  style={{ width: "80px", textAlign: "center" }}
+                  value={Math.round(MarginPerUnit * 100) / 100}
+                  type="number"
+                  min="0.00"
+                  max="100000000.00"
+                  step="0.01"
+                  disabled
+                />
+              </td>
+              <td
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
+              >
+                {"%"}
+              </td>
+            </tr>
+            <tr>
+              <td
+                style={{
+                  width: "154px",
+                  color: "blue",
+                  fontWeight: "bolder",
+                }}
+              >
+                Orders:
+              </td>
+              <td style={{ color: "blue", fontWeight: "bolder" }}>
+                <input
+                  style={{ width: "80px", textAlign: "center" }}
+                  value={Orders}
+                  onChange={(e) => {
+                    setOrders(Math.round(+e.target.value * 100) / 100);
+                    setTotalSAAS(+e.target.value * OneOrderTimeSAAS);
+                    setTotalIn(+TotalInPerOrder * +e.target.value);
+                    setTotalOut(
+                      +TotalOutPerOrder * +e.target.value +
+                        +TotalOneTime +
+                        +e.target.value * OneOrderTimeSAAS
+                    );
+                    setTotalProfit(
+                      +TotalInPerOrder * +e.target.value -
+                        (+TotalOutPerOrder * +e.target.value + +TotalOneTime)
+                    );
+                    setTotalMargin(
+                      ((+TotalInPerOrder * +e.target.value -
+                        (+TotalOutPerOrder * +e.target.value + +TotalOneTime)) /
+                        (+TotalInPerOrder * +e.target.value)) *
+                        100
+                    );
+                  }}
+                  type="number"
+                  min="0.00"
+                  max="100000000.00"
+                  step="0.01"
+                />
+              </td>
+              <td
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
+              >
+                {" "}
+              </td>
+            </tr>
+            <tr>
+              <td
+                style={{
+                  width: "154px",
+                  color: "blue",
+                  fontWeight: "bolder",
+                }}
+              >
+                TotalIn:
+              </td>
+              <td style={{ color: "blue", fontWeight: "bolder" }}>
+                <input
+                  style={{ width: "80px", textAlign: "center" }}
+                  value={Math.round(TotalIn * 100) / 100}
+                  type="number"
+                  min="0.00"
+                  max="100000000.00"
+                  step="0.01"
+                  disabled
+                />
+              </td>
+              <td
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
+              >
+                {"$"}
+              </td>
+            </tr>
+            <tr>
+              <td
+                style={{
+                  width: "154px",
+                  color: "blue",
+                  fontWeight: "bolder",
+                }}
+              >
+                TotalOut:
+              </td>
+              <td style={{ color: "blue", fontWeight: "bolder" }}>
+                <input
+                  style={{ width: "80px", textAlign: "center" }}
+                  value={Math.round(TotalOut * 100) / 100}
+                  type="number"
+                  min="0.00"
+                  max="100000000.00"
+                  step="0.01"
+                  disabled
+                />
+              </td>
+              <td
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
+              >
+                {"$"}
+              </td>
+            </tr>
+            <tr>
+              <td
+                style={{
+                  width: "154px",
+                  color: "blue",
+                  fontWeight: "bolder",
+                }}
+              >
+                TotalProfit:
+              </td>
+              <td style={{ color: "blue", fontWeight: "bolder" }}>
+                <input
+                  style={{ width: "80px", textAlign: "center" }}
+                  value={Math.round(TotalProfit * 100) / 100}
+                  type="number"
+                  min="0.00"
+                  max="100000000.00"
+                  step="0.01"
+                  disabled
+                />
+              </td>
+              <td
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
+              >
+                {"$"}
+              </td>
+            </tr>
+            <tr>
               <td
                 style={{
                   width: "154px",
@@ -2090,7 +1983,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
-                  style={{ width: "80px", textAlign: "left" }}
+                  style={{ width: "80px", textAlign: "center" }}
                   value={Math.round(TotalMargin * 100) / 100}
                   type="number"
                   min="0.00"
@@ -2100,12 +1993,7 @@ function App() {
                 />
               </td>
               <td
-                style={{
-                  width: "150px",
-                  color: "blue",
-                  fontWeight: "bolder",
-                  paddingLeft: "20px",
-                }}
+                style={{ width: "30px", color: "blue", fontWeight: "bolder" }}
               >
                 {"%"}
               </td>
@@ -2117,15 +2005,10 @@ function App() {
         <br />
         <br />
         <br />
-        <div
-          style={{
-            margin: "auto",
-            backgroundColor: "#F0F0F0",
-            paddingTop: "50px",
-            padding: "50px",
-            borderRadius: "100px",
-          }}
-        >
+        <div style={{ textAlign: "center" }}>
+          <h1>:שולי רווח</h1>
+        </div>
+        <div>
           <Chart data={data} />
         </div>
         <br />
@@ -2133,7 +2016,27 @@ function App() {
         <br />
         <br />
         <br />
+        <div style={{ textAlign: "center" }}>
+          <h1>:רווח</h1>
+        </div>
+        <div>
+          <ChartP data={datap} />
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <h1>:מכנסיים התחלתיים לא כולל חד פעמיים</h1>
       </div>
+      <div>
+        <h1>{Math.round(Listing * UnitsInOrder * 100) / 100 + "$"}</h1>
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </>
   );
 }

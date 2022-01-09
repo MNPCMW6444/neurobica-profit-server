@@ -4,7 +4,7 @@
 }
 
 body {
-  min-width: 960px;
   background-color: #ffffff;
   font-family: my;
+  width: 500px;
 }
