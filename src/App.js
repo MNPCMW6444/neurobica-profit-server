@@ -2102,12 +2102,46 @@ function App() {
     <>
       <div style={{ padding: "50px" }}>
         <h1 style={{ textAlign: "center" }}>PF PC(Profitability Calclator)</h1>
-        <select>
+        <select
+          onChange={(e) => {
+            setManufacturing(gots[e.target.value].Manufacturing);
+            setManufacturing(gots[e.target.value].Manufacturing);
+            setInspection(gots[e.target.value].Inspection);
+            setPackaging(gots[e.target.value].Packaging);
+            setProduction(gots[e.target.value].Production);
+            setFreights(gots[e.target.value].Freights);
+            setLandingcost(gots[e.target.value].Landingcost);
+            setInsert(gots[e.target.value].Insert);
+            setPPC(gots[e.target.value].PPC);
+            setListing(gots[e.target.value].Listing);
+            setRevenue(gots[e.target.value].Revenue);
+            setRefFee(gots[e.target.value].RefFee);
+            setFBAFee(gots[e.target.value].FBAFee);
+            setTotalOutPerUnit(gots[e.target.value].TotalOutPerUnit);
+            setOneOrderTimeSAAS(gots[e.target.value].OneOrderTimeSAAS);
+            setTotalSAAS(gots[e.target.value].TotalSAAS);
+            setLLC(gots[e.target.value].LLC);
+            setTrademark(gots[e.target.value].Trademark);
+            setPhotographing(gots[e.target.value].Photographing);
+            setUnboxing(gots[e.target.value].Unboxing);
+            setInsertDesign(gots[e.target.value].InsertDesign);
+            setPackagingDesign(gots[e.target.value].PackagingDesign);
+            setSamples(gots[e.target.value].Samples);
+            setTotalOneTime(gots[e.target.value].TotalOneTime);
+            setUnitsInOrder(gots[e.target.value].UnitsInOrder);
+            setTotalOutPerOrder(gots[e.target.value].TotalOutPerOrder);
+            setTotalInPerOrder(gots[e.target.value].TotalInPerOrder);
+            setMarginPerUnit(gots[e.target.value].MarginPerUnit);
+            setOrders(gots[e.target.value].Orders);
+            setTotalIn(gots[e.target.value].TotalIn);
+            setTotalOut(gots[e.target.value].TotalOut);
+            setTotalProfit(gots[e.target.value].TotalProfit);
+            setTotalMargin(gots[e.target.value].TotalMargin);
+          }}
+        >
           {gots &&
             gots.map &&
-            gots.map((iss) => (
-              <option>{iss._id.substr(iss._id.length - 5)}</option>
-            ))}
+            gots.map((iss, index) => <option>{index}</option>)}
         </select>
         <br />
         <br />
