@@ -49,14 +49,16 @@ function App() {
 
   useEffect(async () => {
     // async function get() {
-    const res = await Axios.get("http://localhost:5000/auth/gets/");
+    const res = await Axios.get(
+      "https://profitseererf.herokuapp.com/auth/gets/"
+    );
     setGots(res.data);
     // }
     //  await get();
   }, []);
 
   async function save() {
-    const res = await Axios.post("http://localhost:5000/auth/", {
+    const res = await Axios.post("https://profitseererf.herokuapp.com/auth/", {
       Manufacturing,
       Inspection,
       Packaging,
