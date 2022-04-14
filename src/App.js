@@ -1,6 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Chart from "./Chart";
 import ChartP from "./ChartP";
+import Axios from "axios";
 
 import {
   exportComponentAsJPEG,
@@ -44,6 +45,56 @@ function App() {
   const [TotalProfit, setTotalProfit] = useState();
   const [TotalMargin, setTotalMargin] = useState();
 
+  const [gots, setGots] = useState();
+
+  useEffect(async () => {
+    // async function get() {
+    const res = await Axios.get("http://localhost:5000/auth/gets/");
+    setGots(res.data);
+    // }
+    //  await get();
+  }, []);
+
+  async function save() {
+    const res = await Axios.post("http://localhost:5000/auth/", {
+      Manufacturing,
+      Inspection,
+      Packaging,
+      Production,
+      Freights,
+      Landingcost,
+      Insert,
+      PPC,
+      Listing,
+      Revenue,
+      RefFee,
+      FBAFee,
+      TotalOutPerUnit,
+      OneOrderTimeSAAS,
+      TotalSAAS,
+      LLC,
+      Trademark,
+      Photographing,
+      Unboxing,
+      InsertDesign,
+      PackagingDesign,
+      Samples,
+      TotalOneTime,
+      UnitsInOrder,
+      TotalOutPerOrder,
+      TotalInPerOrder,
+      MarginPerUnit,
+      Orders,
+      TotalIn,
+      TotalOut,
+      TotalProfit,
+      TotalMargin,
+    });
+    setGots(res);
+  }
+
+  Axios.get();
+
   let data = [];
   for (let i = 1; i < 10; i++) {
     data.push({
@@ -76,6 +127,7 @@ function App() {
     <div ref={ref}>
       <div style={{ padding: "50px" }}>
         <h1 style={{ textAlign: "center" }}>PF PC(Profitability Calclator)</h1>
+
         <table style={{ marginLeft: "auto", marginRight: "auto" }}>
           <tbody style={{ textAlign: "center" }}>
             <tr>
@@ -2048,6 +2100,25 @@ function App() {
     <>
       <div style={{ padding: "50px" }}>
         <h1 style={{ textAlign: "center" }}>PF PC(Profitability Calclator)</h1>
+        <select>
+          {gots &&
+            gots.map &&
+            gots.map((iss) => (
+              <option>{iss._id.substr(iss._id.length - 5)}</option>
+            ))}
+        </select>
+        <br />
+        <br />
+        <button
+          onClick={async () => {
+            await save();
+          }}
+        >
+          save current as new
+        </button>{" "}
+        <br />
+        <br />
+        <br />
         <table style={{ marginLeft: "auto", marginRight: "auto" }}>
           <tbody style={{ textAlign: "center" }}>
             <tr>
