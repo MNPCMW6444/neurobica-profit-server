@@ -11,6 +11,7 @@ import {
 
 function App() {
   const componentRef = useRef();
+  const [asd, setASD] = useState();
 
   const [Manufacturing, setManufacturing] = useState();
   const [Inspection, setInspection] = useState();
@@ -47,18 +48,18 @@ function App() {
 
   const [gots, setGots] = useState();
 
-  useEffect(async () => {
-    // async function get() {
-    const res = await Axios.get(
-      "https://profitseererf.herokuapp.com/auth/gets/"
-    );
-    setGots(res.data);
-    // }
-    //  await get();
-  }, []);
+  useEffect(() => {
+    async function get() {
+      const res = await Axios.get(
+        "https://profitseererf.herokuapp.com/auth/gets/"
+      );
+      setGots(res.data);
+    }
+    get();
+  }, [asd]);
 
   async function save() {
-    const res = await Axios.post("https://profitseererf.herokuapp.com/auth/", {
+    await Axios.post("https://profitseererf.herokuapp.com/auth/", {
       Manufacturing,
       Inspection,
       Packaging,
@@ -92,7 +93,7 @@ function App() {
       TotalProfit,
       TotalMargin,
     });
-    setGots(res);
+    setASD(Math.random());
   }
 
   Axios.get();
