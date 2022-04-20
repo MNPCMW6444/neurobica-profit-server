@@ -13,6 +13,8 @@ function App() {
   const componentRef = useRef();
   const [asd, setASD] = useState();
   const [error, seterror] = useState(false);
+  const [editing, setediting] = useState(false);
+  const [aboutto, setaboutto] = useState(false);
 
   const [Name, setName] = useState();
   const [Manufacturing, setManufacturing] = useState();
@@ -2127,11 +2129,41 @@ function App() {
 
   return (
     <>
-      <div style={{ padding: "50px" }}>
+      <div
+        style={{
+          padding: "50px",
+        }}
+      >
         <h1 style={{ textAlign: "center" }}>
-          {" "}
           GI(gimol I) PC(Profitability Calclator)
         </h1>
+        <div style={{ direction: "rtl" }}>
+          <button
+            onClick={() => {
+              setediting(!editing);
+            }}
+          >
+            {editing ? "סגור תפריט מחיקות" : "פתח תפריט מחיקת חישובים"}
+          </button>
+          {editing &&
+            gots &&
+            gots.map &&
+            gots.map((iss, index) => (
+              <div>
+                {iss.Name + " "}
+                <button style={{ color: "red" }}>מחק</button>
+                {aboutto &&
+                  "בטוח? " +
+                  (
+                    <>
+                      <button>לא</button>
+                      <button>כן</button>
+                    </>
+                  )}
+              </div>
+            ))}
+        </div>
+
         <select
           onChange={(e) => {
             setManufacturing(gots[e.target.value].Manufacturing);
@@ -4176,6 +4208,7 @@ function App() {
       <br />
       <br />
       <br />
+      <div />
     </>
   );
 }
