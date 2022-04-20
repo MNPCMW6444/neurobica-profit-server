@@ -15,6 +15,7 @@ function App() {
   const [error, seterror] = useState(false);
   const [editing, setediting] = useState(false);
   const [aboutto, setaboutto] = useState(false);
+  const [deleting, setdeleting] = useState(false);
 
   const [Name, setName] = useState();
   const [Manufacturing, setManufacturing] = useState();
@@ -2188,9 +2189,11 @@ function App() {
                 {iss.Name + " "}
                 <button
                   onClick={() => {
-                    let array = new Array(gots.length);
-                    array[index] = true;
-                    setaboutto(array);
+                    if (!deleting) {
+                      let array = new Array(gots.length);
+                      array[index] = true;
+                      setaboutto(array);
+                    }
                   }}
                   style={{ color: "red" }}
                 >
@@ -2201,23 +2204,30 @@ function App() {
                     {" בטוח? "}
                     <button
                       onClick={() => {
-                        setaboutto(false);
+                        if (!deleting) setaboutto(false);
                       }}
                     >
                       לא
                     </button>{" "}
                     <button
-                      onClick={() => {
-                        Axios.get(
-                          "https://profitserver.herokuapp.com/auth/gets/delete"
-                        );
-                        setaboutto(false);
-                        setASD(Math.random());
+                      onClick={async () => {
+                        if (!deleting) {
+                          setdeleting(true);
+                          await Axios.post(
+                            "https://profitserver.herokuapp.com/auth/delete",
+                            { index }
+                          );
+                          setaboutto(false);
+                          setASD(Math.random());
+                          setdeleting(false);
+                          if (gots.length == 0) setediting(false);
+                        }
                       }}
                       style={{ color: "red" }}
                     >
                       כן
-                    </button>
+                    </button>{" "}
+                    {deleting && "מוחק....."}
                   </>
                 )}
                 <br />
