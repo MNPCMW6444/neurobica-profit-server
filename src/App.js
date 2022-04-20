@@ -173,6 +173,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={Manufacturing}
                   onChange={(e) => {
@@ -293,6 +294,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={Inspection}
                   onChange={(e) => {
@@ -415,6 +417,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={Packaging}
                   onChange={(e) => {
@@ -537,6 +540,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={Math.round(Production * 100) / 100}
                   type="number"
@@ -564,6 +568,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={Freights}
                   onChange={(e) => {
@@ -681,6 +686,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={Math.round(Landingcost * 100) / 100}
                   type="number"
@@ -708,6 +714,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={Insert}
                   onChange={(e) => {
@@ -824,6 +831,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={PPC}
                   onChange={(e) => {
@@ -940,6 +948,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={Math.round(Listing * 100) / 100}
                   type="number"
@@ -967,6 +976,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={Revenue}
                   onChange={(e) => {
@@ -1082,6 +1092,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={Math.round(RefFee * 100) / 100}
                   type="number"
@@ -1109,6 +1120,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={Math.round(FBAFee * 100) / 100}
                   type="number"
@@ -1136,6 +1148,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={Math.round(TotalOutPerUnit * 100) / 100}
                   type="number"
@@ -1163,6 +1176,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={OneOrderTimeSAAS}
                   onChange={(e) => {
@@ -1250,6 +1264,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={Math.round(TotalSAAS * 100) / 100}
                   type="number"
@@ -1277,6 +1292,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={LLC}
                   onChange={(e) => {
@@ -1349,6 +1365,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={Trademark}
                   onChange={(e) => {
@@ -1421,6 +1438,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={Photographing}
                   onChange={(e) => {
@@ -1493,6 +1511,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={Unboxing}
                   onChange={(e) => {
@@ -1565,6 +1584,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={InsertDesign}
                   onChange={(e) => {
@@ -1637,6 +1657,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={PackagingDesign}
                   onChange={(e) => {
@@ -1709,6 +1730,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={Samples}
                   onChange={(e) => {
@@ -1781,6 +1803,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={Math.round(TotalOneTime * 100) / 100}
                   type="number"
@@ -1808,6 +1831,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={UnitsInOrder}
                   onChange={(e) => {
@@ -1866,6 +1890,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={Math.round(TotalOutPerOrder * 100) / 100}
                   type="number"
@@ -1893,6 +1918,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={Math.round(TotalInPerOrder * 100) / 100}
                   type="number"
@@ -1920,6 +1946,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={Math.round(MarginPerUnit * 100) / 100}
                   type="number"
@@ -1947,6 +1974,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={Orders}
                   onChange={(e) => {
@@ -1993,6 +2021,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={Math.round(TotalIn * 100) / 100}
                   type="number"
@@ -2020,6 +2049,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={Math.round(TotalOut * 100) / 100}
                   type="number"
@@ -2047,6 +2077,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={Math.round(TotalProfit * 100) / 100}
                   type="number"
@@ -2074,6 +2105,7 @@ function App() {
               </td>
               <td style={{ color: "blue", fontWeight: "bolder" }}>
                 <input
+                  disabled
                   style={{ width: "80px", textAlign: "center" }}
                   value={Math.round(TotalMargin * 100) / 100}
                   type="number"
@@ -2137,7 +2169,9 @@ function App() {
         <h1 style={{ textAlign: "center" }}>
           GI(gimol I) PC(Profitability Calclator)
         </h1>
-        <div style={{ direction: "rtl" }}>
+        <div
+          style={{ direction: "rtl", border: editing ? "1px solid gray" : "" }}
+        >
           <button
             onClick={() => {
               setediting(!editing);
@@ -2145,25 +2179,53 @@ function App() {
           >
             {editing ? "סגור תפריט מחיקות" : "פתח תפריט מחיקת חישובים"}
           </button>
+          <br /> <br />
           {editing &&
             gots &&
             gots.map &&
             gots.map((iss, index) => (
               <div>
                 {iss.Name + " "}
-                <button style={{ color: "red" }}>מחק</button>
-                {aboutto &&
-                  "בטוח? " +
-                  (
-                    <>
-                      <button>לא</button>
-                      <button>כן</button>
-                    </>
-                  )}
+                <button
+                  onClick={() => {
+                    let array = new Array(gots.length);
+                    array[index] = true;
+                    setaboutto(array);
+                  }}
+                  style={{ color: "red" }}
+                >
+                  מחק
+                </button>
+                {aboutto[index] && (
+                  <>
+                    {" בטוח? "}
+                    <button
+                      onClick={() => {
+                        setaboutto(false);
+                      }}
+                    >
+                      לא
+                    </button>{" "}
+                    <button
+                      onClick={() => {
+                        Axios.get(
+                          "https://profitserver.herokuapp.com/auth/gets/delete"
+                        );
+                        setaboutto(false);
+                        setASD(Math.random());
+                      }}
+                      style={{ color: "red" }}
+                    >
+                      כן
+                    </button>
+                  </>
+                )}
+                <br />
+                <br />
               </div>
             ))}
         </div>
-
+        <br />
         <select
           onChange={(e) => {
             setManufacturing(gots[e.target.value].Manufacturing);
