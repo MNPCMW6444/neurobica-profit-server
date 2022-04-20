@@ -12,7 +12,9 @@ import {
 function App() {
   const componentRef = useRef();
   const [asd, setASD] = useState();
+  const [error, seterror] = useState(false);
 
+  const [Name, setName] = useState();
   const [Manufacturing, setManufacturing] = useState();
   const [Inspection, setInspection] = useState();
   const [Packaging, setPackaging] = useState();
@@ -51,7 +53,7 @@ function App() {
   useEffect(() => {
     async function get() {
       const res = await Axios.get(
-        "https://profitseererf.herokuapp.com/auth/gets/"
+        "https://profitserver.herokuapp.com/auth/gets/"
       );
       setGots(res.data);
     }
@@ -59,7 +61,8 @@ function App() {
   }, [asd]);
 
   async function save() {
-    await Axios.post("https://profitseererf.herokuapp.com/auth/", {
+    await Axios.post("https://profitserver.herokuapp.com/auth/", {
+      Name,
       Manufacturing,
       Inspection,
       Packaging,
@@ -92,6 +95,27 @@ function App() {
       TotalOut,
       TotalProfit,
       TotalMargin,
+    }).catch(function (error) {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+        seterror(true);
+        setTimeout(() => {
+          seterror(false);
+        }, 5000);
+      } else if (error.request) {
+        // The request was made but no response was received
+        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+        // http.ClientRequest in node.js
+        console.log(error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.log("Error", error.message);
+      }
+      console.log(error.config);
     });
     setASD(Math.random());
   }
@@ -129,7 +153,9 @@ function App() {
   const ComponentToPrint = React.forwardRef((props, ref) => (
     <div ref={ref}>
       <div style={{ padding: "50px" }}>
-        <h1 style={{ textAlign: "center" }}>PF PC(Profitability Calclator)</h1>
+        <h1 style={{ textAlign: "center" }}>
+          GI(gimol I) PC(Profitability Calclator)
+        </h1>
 
         <table style={{ marginLeft: "auto", marginRight: "auto" }}>
           <tbody style={{ textAlign: "center" }}>
@@ -2102,10 +2128,12 @@ function App() {
   return (
     <>
       <div style={{ padding: "50px" }}>
-        <h1 style={{ textAlign: "center" }}>PF PC(Profitability Calclator)</h1>
+        <h1 style={{ textAlign: "center" }}>
+          {" "}
+          GI(gimol I) PC(Profitability Calclator)
+        </h1>
         <select
           onChange={(e) => {
-            setManufacturing(gots[e.target.value].Manufacturing);
             setManufacturing(gots[e.target.value].Manufacturing);
             setInspection(gots[e.target.value].Inspection);
             setPackaging(gots[e.target.value].Packaging);
@@ -2142,8 +2170,15 @@ function App() {
         >
           {gots &&
             gots.map &&
-            gots.map((iss, index) => <option>{index}</option>)}
+            gots.map((iss, index) => <option>{iss.Name}</option>)}
         </select>
+        <br />
+        <br />
+        <input
+          onChange={(e) => setName(e.target.value)}
+          type="text"
+          placeholder="Place for name if you save new"
+        ></input>
         <br />
         <br />
         <button
@@ -2152,7 +2187,10 @@ function App() {
           }}
         >
           save current as new
-        </button>{" "}
+        </button>
+        {error && (
+          <p style={{ color: "red" }}>בדוק שלא חסר שום נתוון כולל שם!</p>
+        )}
         <br />
         <br />
         <br />
